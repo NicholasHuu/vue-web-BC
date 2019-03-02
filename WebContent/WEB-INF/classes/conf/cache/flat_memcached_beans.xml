@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- 平台 -->
+	<bean id="flatMemcachedPool" class="com.danga.MemCached.SockIOPool" factory-method="getInstance" init-method="initialize" destroy-method="shutDown">
+		<constructor-arg>
+			<value>flatMemcachedPool</value>
+		</constructor-arg>
+		<property name="servers">
+			<list>
+				<value>${flat.memcache.server}</value>
+			</list>
+		</property>
+		<property name="initConn">
+			<value>${flat.memcache.initConn}</value>
+		</property>
+		<property name="minConn">
+			<value>${flat.memcache.minConn}</value>
+		</property>
+		<property name="maxConn">
+			<value>${flat.memcache.maxConn}</value>
+		</property>
+		<property name="maintSleep">
+			<value>${flat.memcache.maintSleep}</value>
+		</property>
+		<property name="nagle">
+			<value>${flat.memcache.nagle}</value>
+		</property>
+		<property name="socketTO">
+			<value>${flat.memcache.socketTO}</value>
+		</property>
+	</bean>
+	<bean id="flatMemCachedClient" class="com.danga.MemCached.MemCachedClient">
+		<constructor-arg>
+			<value>flatMemcachedPool</value>
+		</constructor-arg>
+	</bean>
+</beans>

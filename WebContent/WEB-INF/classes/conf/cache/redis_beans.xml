@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle" value="${redis.MaxIdle}"></property>
+		<property name="minIdle" value="${redis.MinIdle}"></property>
+		<property name="maxTotal" value="${redis.MaxTotal}"></property>
+		<property name="maxWaitMillis" value="${redis.MaxWaitMillis}"></property>
+		<property name="blockWhenExhausted" value="${redis.BlockWhenExhausted}"></property>
+		<property name="testOnBorrow" value="${redis.TestOnBorrow}"></property>
+		<property name="testWhileIdle" value="${redis.TestWhileIdle}"></property>
+	</bean>
+
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool"  scope="singleton">
+        <constructor-arg index="0" ref="jedisPoolConfig" />
+        <constructor-arg index="1" value="${redis.server}" />
+        <constructor-arg index="2" value="${redis.port}" />
+        <constructor-arg index="3" value="${redis.timeout}" />
+    	<constructor-arg index="4" value="${redis.password}" />	
+    </bean>
+	
+	<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool"  scope="singleton">
+        <constructor-arg index="0" ref="jedisPoolConfig" />
+        <constructor-arg index="1">
+            <list>
+                <bean class="redis.clients.jedis.JedisShardInfo">
+                    <constructor-arg index="0" value="${redis.server}" />
+                    <constructor-arg index="1" value="${redis.port}" />
+                    <property name="password" value="${redis.password}"></property>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+	
+	<bean id="redisDataSource" class="com.mh.service.impl.RedisDataSourceImpl">
+		<property name="shardedJedisPool" ref="shardedJedisPool"></property>
+		<property name="jedisPool" ref="jedisPool"></property>
+	</bean>
+	
+</beans>

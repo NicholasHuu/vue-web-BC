@@ -1,0 +1,248 @@
+@import "./variable.sass"
+
+// messageTips 全局样式
+.g_messageTips.el-message
+	min-width: 280px
+	top: 200px
+	padding: 10px 20px
+	background: #2a2a2a
+	border-color: #2a2a2a
+	p
+		color: #fff
+
+
+// popup全局样式
+.el-message-box--center
+	.el-message-box__status
+		transform: translateY(0px) !important
+
+.popup-box
+	.popup-cover-shadow
+		z-index: 7
+		position: fixed
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background: #222
+		opacity: .8
+	.popup-content
+		z-index: 8
+		position: fixed
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		margin: auto
+	.popup-header
+		position: relative
+	.popup-close-btn
+		margin-top: 5px
+		cursor: pointer
+		i
+			font-size: 22px
+			transition: all .3s ease-in-out
+			&:hover
+				transform: rotate(180deg)
+	.btn-sure
+		width: 200px
+		height: 40px
+		line-height: 40px
+		margin: 0 auto
+		text-align: center
+		border-radius: 6px
+		background: $color_theme
+		color: #fff
+		cursor: pointer
+// select 和datePaick插件样式修改
+
+
+.el-select
+	width: 120px
+	.el-input--suffix
+		.el-input__inner
+			padding-left: 10px
+			height: 30px
+			line-height: 30px
+			font-size: 13px
+.date-picker
+	.el-date-editor.el-input.el-date-editor--date
+		width: 120px
+		.el-input__inner
+			padding-left: 25px
+			padding-right: 20px
+			height: 30px
+			line-height: 30px
+			font-size: 13px
+	.el-date-editor--date
+		&>.el-input__prefix
+		    left: -1px
+	    	top: -5px
+		&>.el-input__suffix
+	    	top: -5px
+.message-manage .el-checkbox__label
+	line-height: 30px
+.inlineForm .el-select
+	width: 180px
+	.el-input__inner
+		height: 34px !important
+.lotterySection 
+	.el-input-number--mini
+		width: 100px
+		line-height: 30px
+		.el-input-number__decrease, .el-input-number__increase
+			background: #fff
+			i
+				font-size: 16px
+		.el-input__inner	
+			height: 32px
+			line-height: 32px	
+			font-size: 16px
+//member模块
+.member-btn-color
+	color: #499CF6
+	cursor: pointer
+.member-content,.append-temp
+	.btn-search
+		display: block;
+		width: 80px
+		height: 30px
+		line-height: 30px
+		color:#fff
+		text-align: center
+		border-radius: 3px
+		background: $color_theme
+		cursor: pointer
+		user-select: none
+		font-size: 14px
+	#zhuiContain,#contain,#contain-prifitLoss,#contain-accountLottery
+		float: left
+		margin-top: 9px
+	.lineheight-style
+		line-height: 30px
+	.user-name
+		width: 100px
+		height: 26px
+		line-height: 26px
+		padding-left: 6px
+		border-radius: 4px
+		border: 1px solid #ccc
+	.select-zone
+		padding: 20px 20px 0 20px
+		background: #fff
+		li
+			float: left
+			margin-right: 20px
+			margin-bottom: 20px
+			font-size: 14px
+		
+	.record-list
+		min-height: 375px
+		padding: 20px
+		background: #eee
+	.nofound
+		position: relative
+		text-align: center
+		&:after
+			content: "没有符合条件的记录，请更改查询条件"
+			position: absolute
+			top: 260px
+			left: 0
+			right: 0
+			color: #a1a1a1
+			font-size: 14px
+	.pageSwitch
+		padding: 20px
+		background: #eee
+	.page-option
+		position: relative
+		font-size: 13px
+		text-align: center
+		.el-select
+			width: auto
+		.left
+			position: absolute
+			top: 0
+			left: 0
+			line-height: 20px
+		input
+			width: 74px
+			text-align: center
+		.right
+			font-size: 12px
+			user-select: none
+			&>div
+				display: inline-block
+				padding: 7px 10px
+				margin: 0 3px
+				border: 1px solid #7e7e7e
+				border-radius: 4px
+				cursor: pointer
+				color: #4c4c4c
+			.curPage
+				background-color: $color_theme
+				color: #fff
+				border: 1px solid $color_theme
+	table
+		width: 100%
+		font-size: 13px
+		thead
+			background: #ccc
+		td
+			padding: 11px 0
+			border: 1px solid #E6E6E6
+			text-align: center
+			vertical-align: middle
+		tbody
+			background: #f2f2f2
+			&>tr:nth-child(2n)
+				background: #fff
+//翻页组件
+
+.playOptionBtn.btn
+	display: inline-block
+	width: 76px
+	height: 28px
+	line-height: 28px
+	border: 1px solid #ccc
+	border-radius: 4px
+	text-align: center
+	font-size: 13px
+	color: #606266
+
+
+.operationLists
+	position: relative
+	span
+		color: #17008d
+	&:hover
+		.operationList
+			display: block
+	.operationList
+		display: none
+		position: absolute
+		top: 0px
+		left: 50%
+		right: 0
+		width: 87px
+		margin: 0 auto
+		background: #ab0505
+		border-radius: 4px
+		transform: translate(-50%,-100%)
+		li
+			position: relative
+			line-height: 30px
+			cursor: pointer
+			color: #fff
+			user-select: none
+			&:hover
+				text-decoration: underline
+			&:last-child:after
+				position: absolute
+				bottom: -7px
+				left: 36px
+				content: ''
+				display: block
+				border-width: 9px 9px 0 9px
+				border-color: #ab0505 transparent #ccc transparent
+				border-style: solid

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- 会员中心 -->
+	<bean id="memberMemcachedPool" class="com.danga.MemCached.SockIOPool" factory-method="getInstance" init-method="initialize" destroy-method="shutDown">
+		<constructor-arg>
+			<value>memberMemcachedPool</value>
+		</constructor-arg>
+		<property name="servers">
+			<list>
+				<value>${member.memcache.server}</value>
+			</list>
+		</property>
+		<property name="initConn">
+			<value>${member.memcache.initConn}</value>
+		</property>
+		<property name="minConn">
+			<value>${member.memcache.minConn}</value>
+		</property>
+		<property name="maxConn">
+			<value>${member.memcache.maxConn}</value>
+		</property>
+		<property name="maintSleep">
+			<value>${member.memcache.maintSleep}</value>
+		</property>
+		<property name="nagle">
+			<value>${member.memcache.nagle}</value>
+		</property>
+		<property name="socketTO">
+			<value>${member.memcache.socketTO}</value>
+		</property>
+	</bean>
+	<bean id="memberMemCachedClient" class="com.danga.MemCached.MemCachedClient">
+		<constructor-arg>
+			<value>memberMemcachedPool</value>
+		</constructor-arg>
+	</bean>
+</beans>
